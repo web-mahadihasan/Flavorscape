@@ -9,7 +9,7 @@ import TestimonialCard from './TestimonialCard';
 const Testimonial = () => {
     const [reviews, setReviews] = useState([])
     useEffect(()=>  {
-            fetch('review.json')
+            fetch(`${import.meta.env.VITE_BASE_URL}/api/reviews`)
             .then(res =>  res.json())
             .then(data =>  setReviews(data))
         }, [])

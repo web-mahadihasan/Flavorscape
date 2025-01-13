@@ -17,6 +17,7 @@ const OurMenu = () => {
     const pizzaMenu = [...menu].filter(prev =>  prev.category ===  "pizza")
     const saladMenu = [...menu].filter(prev =>  prev.category ===  "salad")
     const soupMenu = [...menu].filter(prev =>  prev.category ===  "soup")
+    console.log(pizzaMenu)
 
     return (
         <div>
@@ -33,7 +34,7 @@ const OurMenu = () => {
                         }
                     </div>
                     <div className="text-center my-8">
-                        <PrimaryButton>Order your favorite food</PrimaryButton>
+                    <Link to={`/order/offered`}><PrimaryButton>Order your favorite food</PrimaryButton></Link>
                     </div>
                 </div>
 
@@ -68,7 +69,7 @@ const OurMenu = () => {
                         }
                     </div>
                     <div className="text-center my-8">
-                        <PrimaryButton>Order your favorite food</PrimaryButton>
+                    <Link to={`/order/pizza`}><PrimaryButton>Order your favorite food</PrimaryButton></Link>
                     </div>
                 </div>
 
@@ -85,7 +86,7 @@ const OurMenu = () => {
                         }
                     </div>
                     <div className="text-center my-8">
-                        <PrimaryButton>Order your favorite food</PrimaryButton>
+                    <Link to={`/order/salad`}><PrimaryButton>Order your favorite food</PrimaryButton></Link>
                     </div>
                 </div>
 
@@ -102,7 +103,7 @@ const OurMenu = () => {
                         }
                     </div>
                     <div className="text-center my-8">
-                        <PrimaryButton>Order your favorite food</PrimaryButton>
+                    <Link to={`/order/soup`}><PrimaryButton>Order your favorite food</PrimaryButton></Link>
                     </div>
                 </div>
 

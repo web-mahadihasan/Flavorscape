@@ -11,7 +11,7 @@ import FoodCard from "../../components/shared/FoodCard/FoodCard";
 const Home = () => {
   const [recomamdeds, setRecomamdeds] = useState([]);
   useEffect(() => {
-    fetch("allMenu.json")
+    fetch("http://localhost:3000/api/menuItems")
       .then((res) => res.json())
       .then((data) => setRecomamdeds(data.slice(0, 4)));
   }, []);

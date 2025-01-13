@@ -7,6 +7,7 @@ export default {
     extend: {
       colors: {
         yellow: "#d1a054",
+        'dark-black': "#1f2937",
       },
       fontFamily: {
         inter: ["Inter", "serif"],

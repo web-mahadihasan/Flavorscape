@@ -34,7 +34,7 @@ const TestimonialCard = ({ review }) => {
 
         <div>
           {includedShapesStyles.map((itemStyles, index) => (
-            <div
+            <div key={index}
               style={{ maxWidth: 120, width: "100%" }}
               className="mx-auto my-2"
             >

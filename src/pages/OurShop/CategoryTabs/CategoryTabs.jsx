@@ -2,11 +2,12 @@ import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router";
 
 const Tabs = ({onClick}) => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const tabsRef = useRef([]);
-
-    const categoryList = ["SALAD", "PIZZA", "SOUP", "DESSERT", "DRINKS"]
-    const {category} = useParams()
+  const tabsRef = useRef([]);
+  
+  const categoryList = ["offered", "salad", "pizza", "soup", "dessert", "drinks"]
+  const {category} = useParams()
+  const initialTab = categoryList.indexOf(category)
+  const [activeIndex, setActiveIndex] = useState(initialTab);
 
 
   useEffect(() => {
@@ -34,14 +35,14 @@ const Tabs = ({onClick}) => {
                  <a
                  key={index}
                  href="#"
-                 className={`tab font-jost text-dark-black tracking-wide ${activeIndex === index ? "active" : ""}`}
+                 className={`tab font-jost uppercase text-dark-black tracking-wide ${activeIndex === index ? "active" : ""}`}
                  onClick={(e) => {
                      e.preventDefault();
                      handleClick(index, tab);
                  }}
                  ref={(el) => (tabsRef.current[index] = el)}
                  >
-                 {tab}
+                 {tab}{index !==  4 && index !==  0? "S" : ""}
                  </a>
              ))}
          </div>

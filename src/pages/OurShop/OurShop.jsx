@@ -4,15 +4,16 @@ import Cover from "../../components/shared/Cover/Cover";
 import useMenu from "../../hooks/useMenu";
 import CategoryTabs from "./CategoryTabs/CategoryTabs";
 import FoodCard from "../../components/shared/FoodCard/FoodCard";
+import { useParams } from "react-router";
 
 const OurShop = () => {
     const {menu} = useMenu()
-    const [tabsTitle, setTabsTitle] = useState("SALAD")
-    console.log(tabsTitle)
+    const {category} = useParams()
+    const [tabsTitle, setTabsTitle] = useState(category)
+    const [categoryFood, setCategoryFood] = useState([])
+   
 
-    
-    const CategoryFood = [...menu].filter(prev =>   prev.category.toLowerCase() ===   tabsTitle.toLowerCase())
-    console.log(CategoryFood)
+    const categoryFoods = [...menu].filter(prev =>   prev.category.toLowerCase() ===   tabsTitle.toLowerCase())
 
     return (
         <div>
@@ -24,7 +25,7 @@ const OurShop = () => {
                 </div>
                 <div className="grid grid-cols-4 gap-6 my-12">
                     {
-                        CategoryFood?.map(food =>  <FoodCard key={food._id} itemData={food}/>)
+                        categoryFoods?.map(food =>  <FoodCard key={food._id} itemData={food}/>)
                     }
                 </div>
             </section>
