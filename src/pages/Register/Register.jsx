@@ -90,13 +90,13 @@ const Register = () => {
 
     return (
         <div
-        className={`relative h-screen min-h-screen bg-no-repeat bg-center bg-cover`}
+        className={`relative min-h-screen bg-no-repeat bg-center bg-cover`}
         style={{
             backgroundImage: `url('${bg}')`,
           }}
         >
         {/* <div className="absolute w-full inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 duration-300 rounded-md"></div> */}
-        <div className="h-full w-full flex items-center max-w-5xl mx-auto xl:px-0 font-inter">
+        <div className="min-h-screen w-full flex items-center max-w-5xl mx-auto xl:px-0 font-inter">
           <div className="text-center rounded-md  w-full login-shadow" >
             <div className=" rounded-md py-6 px-10">
            

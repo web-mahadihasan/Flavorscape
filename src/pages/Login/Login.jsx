@@ -3,7 +3,7 @@ import bg from "../../assets/home/Login.png"
 import { useState } from "react";
 import { VscEyeClosed } from "react-icons/vsc";
 import { PiEyeClosedBold } from "react-icons/pi";
-import { Link, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import loginLoiite from "../../assets/lottie/login-lottie.json"
 import Lottie from "lottie-react";
 import useAuth from "../../hooks/useAuth";
@@ -14,6 +14,8 @@ const Login = () => {
     const {loginWithGoogle, setUser, loginWithEmail} = useAuth()
     const navigate = useNavigate()
     const [error, setError] = useState({})
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/"
 
     const handleEmailLogin = (e) =>  {
         e.preventDefault()
@@ -24,7 +26,7 @@ const Login = () => {
         .then(result =>  {
             // console.log(result.user)
             toast.success("Successfully Log in")
-            navigate("/")
+            navigate(from, {replace: true})
         }).catch(err =>  {
             toast.error("Failed to Login")
             if ((err = "auth/invalid-credential")) {
@@ -43,7 +45,7 @@ const Login = () => {
 
             toast.success("Successfully Log in")
             setUser(result.user)
-            navigate("/")
+            navigate(from, {replace: true})
         } catch (err) {
             toast.error("Failed to Login")
             console.log(err)
@@ -52,13 +54,13 @@ const Login = () => {
 
     return (
         <div
-        className={`relative h-screen bg-no-repeat bg-center bg-cover`}
+        className={`relative min-h-screen bg-no-repeat bg-center bg-cover`}
         style={{
             backgroundImage: `url('${bg}')`,
           }}
         >
         {/* <div className="absolute w-full inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-30 duration-300 rounded-md"></div> */}
-        <div className="h-full w-full flex items-center max-w-5xl mx-auto xl:px-0">
+        <div className="min-h-screen w-full flex items-center max-w-5xl mx-auto xl:px-0">
           <div className="text-center rounded-md  w-full login-shadow" >
             <div className=" rounded-md py-24 px-10">
            

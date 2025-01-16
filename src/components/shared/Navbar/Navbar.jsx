@@ -7,19 +7,22 @@ import { Divide as Hamburger } from 'hamburger-react'
 import { Link } from "react-router";
 import useAuth from "../../../hooks/useAuth";
 import toast from "react-hot-toast";
+import { IoCartOutline } from "react-icons/io5";
+import useCart from "../../../hooks/useCart";
 
 const Navbar = () => {
 
     const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false)
     const {user, logOutUser} = useAuth()
 
+    const [cart] = useCart()
+
     const navLinks =  <ul className="items-center gap-4 font-semibold text-[1rem] text-white lg:flex hidden font-inter">
             <li className="uppercase before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer"> <Link>Home</Link></li>
             <li className="before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer uppercase"> <Link>Contact us</Link></li>
-            <li className="before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer uppercase"> <Link>Dashboard</Link></li>
+            <li className="before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer uppercase"> <Link to={"/dashboard"}>Dashboard</Link></li>
             <li className="before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer uppercase"> <Link to={"/our-menu"}>Our Menu</Link></li>
             <li className="before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer uppercase"> <Link to={"/order/dessert"}>Our shop</Link></li>
-            <li className="before:w-0 hover:before:w-full before:bg-[#3B9DF8] before:h-[2px] before:transition-all before:duration-300 before:absolute relative before:rounded-full before:bottom-[-2px] hover:text-[#3B9DF8] transition-all duration-300 before:left-0 cursor-pointer uppercase"> <Link to={"/auth/login"}>Our shop</Link></li>
         </ul>
 
         const handleLogout = async () =>  {
@@ -41,6 +44,16 @@ const Navbar = () => {
             <div className="flex items-center font-inter gap-6">
                {navLinks}
                 <div className="items-center gap-[10px] flex">
+                    <div className="relative">
+                        <IoCartOutline  className="text-[2.3rem]" />
+                        <div className=" absolute top-[-10%] right-[-20%]  text-white min-w-[20px] min-h-[20px] text-center">
+                        <span className="text-[0.8rem] bg-gray-800 py-[2px] px-[6px] font-inter rounded-full w-full h-full border-[1px] border-yellow">
+                            {
+                                cart.length
+                            }
+                        </span>
+                        </div>
+                    </div>
                     {
                         user ? <button onClick={handleLogout} className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize bg-yellow text-white hover:bg-[#1f2937] transition-all duration-300 sm:flex hidden">Sign out</button>:  <Link to={"/auth/login"}>
                             <button className="py-[7px] text-[1rem] px-[16px] rounded-full capitalize bg-yellow text-white hover:bg-[#1f2937] transition-all duration-300 sm:flex hidden">Log in</button>
